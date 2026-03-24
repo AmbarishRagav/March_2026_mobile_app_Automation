@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<!-- Parallel execution suite — runs emulator and physical device simultaneously -->
+<suite name="GoKhana Parallel Suite" verbose="1" parallel="tests" thread-count="2">
+
+    <listeners>
+        <listener class-name="utils.TestListener"/>
+    </listeners>
+
+    <!-- Runs on Physical Device -->
+    <test name="Physical Device Tests">
+        <parameter name="targetDevice" value="physical"/>
+        <classes>
+            <class name="tests.LoginTest"/>
+        </classes>
+    </test>
+
+    <!-- Runs on Emulator -->
+    <test name="Emulator Tests">
+        <parameter name="targetDevice" value="emulator"/>
+        <classes>
+            <class name="tests.LoginTest"/>
+        </classes>
+    </test>
+
+</suite>

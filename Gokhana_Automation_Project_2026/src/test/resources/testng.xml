@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="GoKhana Mobile Test Suite" verbose="1">
+
+    <listeners>
+        <listener class-name="utils.TestListener"/>
+    </listeners>
+
+    <test name="Login Tests">
+        <classes>
+            <class name="tests.LoginTest"/>
+        </classes>
+    </test>
+
+<!--    <test name="Search Tests">-->
+<!--        <classes>-->
+<!--            <class name="tests.search.SearchInHomePageTest"/>-->
+<!--            <class name="tests.search.IrrelevantSearchTest"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+<!--    <test name="Account Tests">-->
+<!--        <classes>-->
+<!--            <class name="tests.account.AddAccountDetailsTest"/>-->
+<!--            <class name="tests.account.EditAccountDetailsTest"/>-->
+<!--            <class name="tests.account.AddCorporateCodeTest"/>-->
+<!--            <class name="tests.account.DeleteCorporateCodeTest"/>-->
+<!--            <class name="tests.account.AddFavouritesTest"/>-->
+<!--            <class name="tests.account.AddAdditionalAddressTest"/>-->
+<!--            <class name="tests.account.DeleteAnAccountTest"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+<!--    <test name="Food Outlet Tests">-->
+<!--        <classes>-->
+<!--            <class name="tests.foodOutlets.IncreaseQuantityTest"/>-->
+<!--            <class name="tests.foodOutlets.DecreaseQuantityTest"/>-->
+<!--            <class name="tests.foodOutlets.ValidateViewCartTest"/>-->
+<!--            <class name="tests.foodOutlets.IncreaseOrDecreaseFromCounterPageTest"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+</suite>
