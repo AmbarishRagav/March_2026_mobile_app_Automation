@@ -115,9 +115,8 @@ public class LoginPage {
         System.out.println("✅ Food Court clicked");
     }
 
-    public void enterMobileNumber(String number) throws InterruptedException {
+    public void enterMobileNumber(String number) {
         mobileNumberField().sendKeys(number);
-        Thread.sleep(2000);
 
         // Keyboard handling differs per device type
         String udid = driver.getCapabilities().getCapability("appium:udid").toString();
@@ -151,26 +150,36 @@ public class LoginPage {
             System.out.println("✅ Keyboard dismissed via tap at (" + x + ", " + y + ") (emulator)");
         }
 
-        Thread.sleep(2000); // wait for checkbox to appear
+        // Wait for the terms checkbox to become visible after keyboard dismissal
+        wait.until(ExpectedConditions.elementToBeClickable(
+                AppiumBy.xpath(Locators.TERMS_CHECKBOX)
+        ));
         System.out.println("✅ Mobile number entered: " + number);
     }
 
-    public void acceptTerms() throws InterruptedException {
+    public void acceptTerms() {
         termsCheckbox().click();
-        Thread.sleep(2000); // wait for Get OTP button to activate
+        // Wait for Get OTP button to become clickable after terms are accepted
+        wait.until(ExpectedConditions.elementToBeClickable(
+                AppiumBy.xpath(Locators.GET_OTP_BUTTON)
+        ));
         System.out.println("✅ Terms accepted");
     }
 
-    public void clickGetOTP() throws InterruptedException {
+    public void clickGetOTP() {
         getOTPButton().click();
-        Thread.sleep(2000); // wait for OTP screen to load
+        // Wait for the OTP input field to appear after clicking Get OTP
+        new WebDriverWait(driver, Duration.ofSeconds(20))
+                .until(ExpectedConditions.elementToBeClickable(
+                        AppiumBy.xpath(Locators.OTP_INPUT_FIELD)
+                ));
         System.out.println("✅ Get OTP clicked");
     }
 
     public void enterOTP(String otp) throws InterruptedException {
         otpInputField().click();
         otpInputField().sendKeys(otp);
-        Thread.sleep(2000); // wait for Login button to highlight
+        Thread.sleep(9000);
         System.out.println("✅ OTP entered: " + otp);
     }
 

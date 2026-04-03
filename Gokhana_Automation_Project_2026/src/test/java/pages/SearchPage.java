@@ -1,5 +1,6 @@
 package pages;
 
+import constants.Locators;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.WebElement;
@@ -7,7 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.List;
+import java.util.Map;
 
 public class SearchPage {
 
@@ -23,72 +24,43 @@ public class SearchPage {
 
     private WebElement searchIcon() {
         return wait.until(ExpectedConditions.elementToBeClickable(
-                AppiumBy.xpath("//android.widget.ImageView[@content-desc='Search']")
-                // 🔴 Update from Appium Inspector
+                AppiumBy.xpath(Locators.SEARCH_ICON)
         ));
     }
 
-    private WebElement searchBox() {
-        return wait.until(ExpectedConditions.elementToBeClickable(
-                AppiumBy.xpath("//android.widget.EditText[@hint='Search']")
-                // 🔴 Update from Appium Inspector
+    private WebElement searchInputField() {
+        // The search field is a non-clickable android.view.View (Flutter/custom rendered)
+        // We wait for it to be present (visible) — we will tap it by coordinates instead
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(
+                AppiumBy.accessibilityId(Locators.SEARCH_INPUT_FIELD)
         ));
-    }
-
-    private List<WebElement> searchResults() {
-        return driver.findElements(
-                AppiumBy.xpath("//android.widget.TextView[@resource-id='result_name']")
-                // 🔴 Update from Appium Inspector
-        );
     }
 
     // ── Actions ───────────────────────────────────────────
 
     public void clickSearchIcon() {
         searchIcon().click();
-        System.out.println("✅ Search icon clicked");
+        System.out.println("✅ Search icon clicked — navigated to search page");
     }
 
-    public void typeSearchText(String text) {
-        searchBox().sendKeys(text);
-        System.out.println("✅ Search text entered: " + text);
+    public void typeSearchQuery(String searchfoodcourtName) throws InterruptedException {
+        // Wait for the search field to be visible — cursor is already focused on landing
+        searchInputField();
+        System.out.println("✅ Search input field found on screen");
+
+        // Use 'mobile: type' — types into the currently focused element without needing
+        // the soft keyboard to be visible. This works on both emulator and real device.
+        // 'mobile: type' is natively supported by UiAutomator2 driver (no extra security flags needed).
+        driver.executeScript("mobile: type", Map.of("text", searchfoodcourtName));
+
+        System.out.println("✅ Search query typed: " + searchfoodcourtName);
+        Thread.sleep(9000); // wait 9 seconds for results to load
     }
 
-    public List<String> getResultNames() {
-        List<WebElement> results = searchResults();
-        List<String> names = new java.util.ArrayList<>();
-        for (WebElement result : results) {
-            names.add(result.getText());
-        }
-        System.out.println("✅ Results found: " + names.size());
-        return names;
-    }
+    // ── Flows ─────────────────────────────────────────────
 
-    // ── From old project ──────────────────────────────────
-
-    private boolean isSearchResultDisplayed(org.openqa.selenium.By locator, boolean shouldExist) {
-        try {
-            WebElement result = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-            return shouldExist == result.isDisplayed();
-        } catch (Exception e) {
-            return !shouldExist;
-        }
-    }
-
-    public boolean searchInHomePage(String searchTerm) {
-        try {
-            searchBox().sendKeys(searchTerm);
-            return isSearchResultDisplayed(
-                    org.openqa.selenium.By.xpath("//android.view.View[contains(@content-desc, 'Gokhana')]"),
-                    !searchTerm.equals("xxxxxxx")
-            );
-        } catch (Exception e) {
-            System.err.println("❌ searchInHomePage failed: " + e.getMessage());
-            return false;
-        }
-    }
-
-    public boolean irrelevantSearch() {
-        return searchInHomePage("xxxxxxx");
+    public void searchFor(String searchfoodcourtName) throws InterruptedException {
+        clickSearchIcon();            // clicks the search icon ONCE → moves to search page
+        typeSearchQuery(searchfoodcourtName); // taps field by coords → types into active element → waits 9s
     }
 }
