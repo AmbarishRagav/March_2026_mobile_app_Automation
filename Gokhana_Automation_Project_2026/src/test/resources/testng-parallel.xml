@@ -12,7 +12,7 @@
     <test name="Physical Device Tests">
         <parameter name="targetDevice" value="physical"/>
         <classes>
-            <class name="tests.LoginTest"/>
+            <class name="tests.SearchTest"/>
         </classes>
     </test>
 
@@ -20,7 +20,7 @@
     <test name="Emulator Tests">
         <parameter name="targetDevice" value="emulator"/>
         <classes>
-            <class name="tests.LoginTest"/>
+            <class name="tests.SearchTest"/>
         </classes>
     </test>
 

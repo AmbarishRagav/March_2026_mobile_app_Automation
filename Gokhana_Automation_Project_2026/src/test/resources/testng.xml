@@ -7,38 +7,11 @@
         <listener class-name="utils.TestListener"/>
     </listeners>
 
-    <test name="Login Tests">
+    <test name="Search Tests">
+        <parameter name="targetDevice" value="emulator"/>
         <classes>
-            <class name="tests.LoginTest"/>
+            <class name="tests.SearchTest"/>
         </classes>
     </test>
-
-<!--    <test name="Search Tests">-->
-<!--        <classes>-->
-<!--            <class name="tests.search.SearchInHomePageTest"/>-->
-<!--            <class name="tests.search.IrrelevantSearchTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-
-<!--    <test name="Account Tests">-->
-<!--        <classes>-->
-<!--            <class name="tests.account.AddAccountDetailsTest"/>-->
-<!--            <class name="tests.account.EditAccountDetailsTest"/>-->
-<!--            <class name="tests.account.AddCorporateCodeTest"/>-->
-<!--            <class name="tests.account.DeleteCorporateCodeTest"/>-->
-<!--            <class name="tests.account.AddFavouritesTest"/>-->
-<!--            <class name="tests.account.AddAdditionalAddressTest"/>-->
-<!--            <class name="tests.account.DeleteAnAccountTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-
-<!--    <test name="Food Outlet Tests">-->
-<!--        <classes>-->
-<!--            <class name="tests.foodOutlets.IncreaseQuantityTest"/>-->
-<!--            <class name="tests.foodOutlets.DecreaseQuantityTest"/>-->
-<!--            <class name="tests.foodOutlets.ValidateViewCartTest"/>-->
-<!--            <class name="tests.foodOutlets.IncreaseOrDecreaseFromCounterPageTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
 
 </suite>

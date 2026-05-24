@@ -1,22 +1,6 @@
 # 📱 GoKhana Mobile Automation Framework
 
-> **AI-Assisted Mobile Test Automation** — Built using Claude AI with MCP Server integration directly inside IntelliJ IDEA IDE
-
----
-
-## 🤖 AI Integration Highlight
-
-This project was developed using **Claude AI (Anthropic)** integrated directly into **IntelliJ IDEA** via the **MCP (Model Context Protocol) Server**. The AI assisted in:
-
-- 🏗️ Designing the entire framework architecture
-- 🔍 Identifying and fixing Appium locators in real-time
-- 🐛 Debugging test failures from terminal output
-- 📝 Writing and refactoring Java code inside the IDE
-- 🔄 Reading, editing and creating files directly through the IDE
-- 🧪 Building test cases and page object models
-- ⚙️ Setting up parallel execution and reporting
-
-> The MCP Server allowed Claude AI to directly read files, edit code, run builds and fix errors inside IntelliJ IDEA — making the entire development process conversational and AI-driven.
+> **Mobile Test Automation Framework** — End-to-end Android automation built with Appium, Java and TestNG using the Page Object Model design pattern.
 
 ---
 
@@ -30,8 +14,6 @@ This project was developed using **Claude AI (Anthropic)** integrated directly i
 | TestNG | 7.12.0 | Test framework |
 | Maven | 3.x | Build tool |
 | ExtentReports | 5.1.1 | HTML reporting |
-| Claude AI | Sonnet 4.6 | AI pair programming |
-| MCP Server | - | IDE ↔ AI integration |
 
 ---
 
@@ -154,16 +136,13 @@ targetDevice=physical
 
 ---
 
-## 🤝 AI-Assisted Development
+## 🤝 About
 
-This project demonstrates modern **AI-augmented engineering** in test automation:
+This project demonstrates a production-quality mobile automation framework built on industry-standard practices:
 
-- **Claude AI (Anthropic)** was integrated into **IntelliJ IDEA** via **MCP (Model Context Protocol) Server**
-- The AI could directly read/write files, run builds, fix compilation errors and debug test failures in real-time inside the IDE
-- All framework architecture, locator strategies, debugging and code were pair-programmed conversationally with AI
-- This approach significantly reduced development time while maintaining production-quality code standards
-
-> 💡 This is a showcase of how AI tools like Claude AI with MCP Server integration can transform the way automation engineers build frameworks — faster, smarter and more efficiently.
+- Designed and developed independently as a showcase of mobile test automation skills
+- Covers real-world scenarios including login, search, account management and food outlet interactions
+- Follows clean code principles with maintainable, scalable architecture
 
 ---
 
@@ -171,4 +150,3 @@ This project demonstrates modern **AI-augmented engineering** in test automation
 
 **Ambar**
 - Mobile Automation Engineer
-- Framework built with AI pair programming using Claude AI + MCP Server + IntelliJ IDEA
